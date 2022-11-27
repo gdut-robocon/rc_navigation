@@ -1,0 +1,21 @@
+#  http://wiki.ros.org/costmap_2d#Map_management_parameters
+local_costmap:
+  #  global_frame: odom
+  global_frame: amcl_pose
+  robot_base_frame: base_link
+
+  update_frequency: 20.0
+  # publish visualization information
+  publish_frequency: 5.0
+  static_map: true
+  # costmap weather remain centered around the robot as the robot moves through the world.
+  # Whether or not to use a rolling window version of the costmap.
+  # If the static_map parameter is set to true, this parameter must be set to false.
+  rolling_window: false
+  # the width (meters), height (meters), and resolution (meters/cell) of the costmap.
+  width: 3.0
+  height: 3.0
+  resolution: 0.01
+  # The x/y origin of the map in the global frame in meters.
+  origin_x: 0.0
+  origin_y: 0.0

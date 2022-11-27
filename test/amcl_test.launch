@@ -1,0 +1,23 @@
+<launch>
+    <!-- initial_pose -->
+    <arg name="initial_pose_x" default="-0.6"/>
+    <arg name="initial_pose_y" default="0.6"/>
+    <arg name="initial_pose_yaw" default="0.0"/>
+    <!-- map params -->
+    <arg name="map" default="rc_2105.yaml"/>
+
+    <!--    amcl-->
+    <include file="$(find rc_navigation)/launch/amcl/amcl.launch">
+        <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+        <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+        <arg name="initial_pose_a" value="$(arg initial_pose_yaw)"/>
+    </include>
+
+    <node name="map_server" pkg="map_server" type="map_server"
+          args="$(find rc_navigation)/map/$(arg map)"/>
+
+    <node pkg="rviz" type="rviz" name="rviz" required="true"
+          args="-d $(find rc_navigation)/config/rviz/rviz_config.rviz"/>
+
+</launch>
+
