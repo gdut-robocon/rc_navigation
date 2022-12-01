@@ -8,7 +8,7 @@ TebLocalPlannerROS:
   #（即位置、速度、航向信息，可通过TEB可视化在rivz中看到）的默认距离
   #此距离不固定，规划器自动根据速度大小调整这一距离，速度越大，相邻距离自然越大，
   #较小的值理论上可提供更高精度
-  dt_ref: 0.3               #局部路径规划的解析度
+  dt_ref: 0.5               #局部路径规划的解析度
   dt_hysteresis: 0.1        #允许改变的时域解析度的浮动范围， 一般为 dt_ref 的 10% 左右;
   max_samples: 500          #
   global_plan_overwrite_orientation: True      #覆盖全局路径中局部路径点的朝向
@@ -56,13 +56,13 @@ TebLocalPlannerROS:
   #*******************************************************************************
   # Obstacles
   #*******************************************************************************
-  min_obstacle_dist: 0.3                     #和障碍物最小距离
-  inflation_dist: 0.4                         #障碍物膨胀距离
+  min_obstacle_dist: 0.4                     #和障碍物最小距离
+  inflation_dist: 0.5                         #障碍物膨胀距离
   include_costmap_obstacles: True             #costmap 中的障碍物是否被直接考虑
   costmap_obstacles_behind_robot_dist: 2.0    #规划时考虑后面n米内的障碍物
   obstacle_poses_affected: 10                 #障碍物姿态受影响程度0-30
 
-  dynamic_obstacle_inflation_dist: 0.2      #动态障碍物的膨胀范围
+  dynamic_obstacle_inflation_dist: 0.5      #动态障碍物的膨胀范围
   include_dynamic_obstacles: False          #是否将动态障碍物预测为速度模型
 
 

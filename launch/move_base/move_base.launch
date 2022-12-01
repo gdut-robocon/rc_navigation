@@ -1,24 +1,7 @@
 <launch>
-    <arg name="robot_type" default="test_engineer"/>
-    <!-- map params -->
-    <arg name="map" default="rc_2105.yaml"/>
     <!-- rviz params -->
-    <arg name="open_rviz" default="true"/>
-
-    <!--- Run Gazebo of Robot -->
-    <include file="$(find rc_description)/launch/test_urdf.launch"/>
-    <!--    <include file="$(find car_gazebo)/launch/car_gazebo_empty_world.launch"/>-->
-
-    <!-- car_controller -->
-    <include file="$(find car_controller)/launch/load_controller.launch"/>
-
-    <!-- Run the map server -->
-    <node name="map_server" pkg="map_server" type="map_server"
-          args="$(find rc_navigation)/map/$(arg map)"/>
-
-    <!-- amcl -->
-    <!--    <include file="$(find rc_nvaigation)/launch/amcl/amcl.launch"/>-->
-
+    <arg name="open_rviz" default="false"/>
+    
     <!-- move_base -->
     <node pkg="move_base" type="move_base" respawn="false" name="move_base" output="screen">
         <param name="base_global_planner" value="global_planner/GlobalPlanner"/>
@@ -30,7 +13,7 @@
         <rosparam file="$(find rc_navigation)/config/move_base/teb_local_planner_params.yaml" command="load"/>
         <rosparam file="$(find rc_navigation)/config/move_base/costmap_common_params.yaml" command="load"
                   ns="global_costmap"/>
-        <rosparam file="$(find rc_navigation)/param/costmap_common_params.yaml" command="load"
+        <rosparam file="$(find rc_navigation)/config/move_base/costmap_common_params.yaml" command="load"
                   ns="local_costmap"/>
     </node>
 

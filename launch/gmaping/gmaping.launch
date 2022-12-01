@@ -6,11 +6,10 @@
     <arg name="set_map_frame" default="map"/>
 
     <!--- Run Gazebo of Robot -->
-    <!--    <include file="$(find rc_description)/launch/test_urdf.launch"/>-->
-    <include file="$(find car_gazebo)/launch/car_gazebo_empty_world.launch"/>
+    <!--    <include file="$(find rc_gazebo)/launch/taske_model.launch"/>-->
 
     <!-- car_controller -->
-    <include file="$(find car_controller)/launch/load_controller.launch"/>
+    <!--    <include file="$(find car_controller)/launch/load_controller.launch"/>-->
 
     <!--    Gmapping-->
     <node pkg="gmapping" type="slam_gmapping" name="robot_slam_gmapping" output="screen">
