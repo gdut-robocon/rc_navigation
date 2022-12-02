@@ -1,15 +1,9 @@
 <launch>
     <!-- Arguments -->
-    <arg name="model" value="standard3"/>
+    <arg name="load_rviz" default="true"/>
     <arg name="set_base_frame" default="base_link"/>
     <arg name="set_odom_frame" default="odom"/>
     <arg name="set_map_frame" default="map"/>
-
-    <!--- Run Gazebo of Robot -->
-    <!--    <include file="$(find rc_gazebo)/launch/taske_model.launch"/>-->
-
-    <!-- car_controller -->
-    <!--    <include file="$(find car_controller)/launch/load_controller.launch"/>-->
 
     <!--    Gmapping-->
     <node pkg="gmapping" type="slam_gmapping" name="robot_slam_gmapping" output="screen">
@@ -21,7 +15,9 @@
     </node>
 
     <!-- rviz -->
-    <node pkg="rviz" type="rviz" name="rviz" required="true"
-          args="-d $(find rc_navigation)/config/rviz/rviz_config.rviz"/>
+    <group if="$(arg load_rviz)">
+        <node pkg="rviz" type="rviz" name="rviz" required="true"
+              args="-d $(find rc_navigation)/config/rviz/rviz_config.rviz"/>
+    </group>
 
 </launch>

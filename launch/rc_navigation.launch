@@ -1,22 +1,28 @@
 <launch>
-    <!-- map params -->
     <arg name="load_rviz" default="true"/>
     <arg name="map" default="task_map.yaml"/>
+    <arg name="using_gmaping" default="true"/>
     <!-- amcl params -->
     <arg name="initial_pose_x" default="0.0"/>
     <arg name="initial_pose_y" default="1.0"/>
     <arg name="initial_pose_a" default="0.0"/>
 
-    <!-- amcl -->
-    <include file="$(find rc_navigation)/launch/amcl/amcl.launch">
-        <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
-        <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
-        <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
-    </include>
-    
-    <!-- map server -->
-    <node name="map_server" pkg="map_server" type="map_server"
-          args="$(find rc_navigation)/map/$(arg map)"/>
+    <group if="$(arg using_gmaping)">
+        <include file="$(find rc_navigation)/launch/gmapping/gmapping.launch">
+            <arg name="load_rviz" value="false"/>
+        </include>
+    </group>
+
+    <group unless="$(arg using_gmaping)">
+        <node name="map_server" pkg="map_server" type="map_server"
+              args="$(find rc_navigation)/map/$(arg map)"/>
+
+        <include file="$(find rc_navigation)/launch/amcl/amcl.launch">
+            <arg name="initial_pose_x" value="$(arg initial_pose_x)"/>
+            <arg name="initial_pose_y" value="$(arg initial_pose_y)"/>
+            <arg name="initial_pose_a" value="$(arg initial_pose_a)"/>
+        </include>
+    </group>
 
 
     <!-- move_base -->

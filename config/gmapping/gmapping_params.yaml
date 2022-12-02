@@ -1,6 +1,7 @@
 # http://wiki.ros.org/gmapping#Example
-map_update_interval: 20.0
-maxUrange: 7.0
+# radar:ULT-10LX
+map_update_interval: 10.0
+maxUrange: 11.0
 sigma: 0.05
 kernelSize: 1
 lstep: 0.05

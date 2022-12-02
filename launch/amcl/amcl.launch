@@ -10,8 +10,7 @@
     <arg name="global_frame_id" default="map"/>
 
     <node pkg="amcl" type="amcl" name="robot_amcl">
-        <rosparam file="$(find rc_navigation)/config/amcl/amcl_params.yaml" command="load"
-                  ns="robot_amcl"/>
+        <rosparam file="$(find rc_navigation)/config/amcl/amcl_params.yaml" command="load"/>
 
         <param name="use_map_topic" value="$(arg use_map_topic)"/>
 
