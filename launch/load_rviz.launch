@@ -1,0 +1,9 @@
+<launch>
+    <arg name="load_rviz" default="true"/>
+    <!--    rviz-->
+    <group if="$(arg load_rviz)">
+        <node pkg="rviz" type="rviz" name="rviz" required="true"
+              args="-d $(find rc_navigation)/config/rviz/rviz_config.rviz"/>
+    </group>
+</launch>
+

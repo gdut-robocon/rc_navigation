@@ -1,6 +1,6 @@
 <launch>
     <!-- Arguments -->
-    <arg name="load_rviz" default="true"/>
+    <arg name="load_rviz" default="false"/>
     <arg name="set_base_frame" default="base_link"/>
     <arg name="set_odom_frame" default="odom"/>
     <arg name="set_map_frame" default="map"/>
