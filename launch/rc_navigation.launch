@@ -1,19 +1,21 @@
 <launch>
 
     <arg name="map" default="task_map.yaml"/>
-    <arg name="using_gmaping" default="true"/>
+    <arg name="method" default="hector_slam" doc="gmapping hector_slam"/>
+    <arg name="using_method" default="false"/>
+    
     <!-- amcl params -->
     <arg name="initial_pose_x" default="0.0"/>
     <arg name="initial_pose_y" default="1.0"/>
     <arg name="initial_pose_a" default="0.0"/>
 
-    <group if="$(arg using_gmaping)">
-        <include file="$(find rc_navigation)/launch/gmapping/gmapping.launch">
-            <arg name="load_rviz" value="false"/>
+    <group if="$(arg using_method)">
+        <include file="$(find rc_navigation)/launch/$(arg method)/$(arg method).launch">
+            <arg name="load_rviz" value="true"/>
         </include>
     </group>
 
-    <group unless="$(arg using_gmaping)">
+    <group unless="$(arg using_method)">
         <node name="map_server" pkg="map_server" type="map_server"
               args="$(find rc_navigation)/map/$(arg map)"/>
 
