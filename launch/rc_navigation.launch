@@ -2,7 +2,7 @@
 
     <arg name="map" default="task_map.yaml"/>
     <arg name="method" default="hector_slam" doc="gmapping hector_slam"/>
-    <arg name="using_method" default="false"/>
+    <arg name="using_method" default="true"/>
     
     <!-- amcl params -->
     <arg name="initial_pose_x" default="0.0"/>

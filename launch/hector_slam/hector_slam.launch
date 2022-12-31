@@ -1,4 +1,5 @@
 <launch>
+<!-- please close action_controller before you use -->
     <!-- Arguments -->
     <arg name="load_rviz" default="true"/>
     <arg name="set_base_frame" default="base_link"/>
@@ -16,7 +17,7 @@
     </node>
 
     <!-- map_scanmatcher_broadcaster -->
-    <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0.0 0.0 0.0 0 0 0.0 /map /odom 10" />
+    <!-- <node pkg="tf" type="static_transform_publisher" name="map_to_odom" args="0.0 0.0 0.0 0 0 0.0 /map /odom 10" /> -->
     <node pkg="tf" type="static_transform_publisher" name="map_scanmatcher_broadcaster" args="0 0 0 0 0 0 map scanmatcher_frame 5"/>
 
     <!-- rviz -->
