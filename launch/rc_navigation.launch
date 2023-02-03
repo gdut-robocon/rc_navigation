@@ -1,7 +1,7 @@
 <launch>
 
     <arg name="map" default="task_map.yaml"/>
-    <arg name="method" default="hector_slam" doc="gmapping hector_slam"/>
+    <arg name="method" default="gmapping" doc="gmapping hector_slam"/>
     <arg name="using_method" default="true"/>
     
     <!-- amcl params -->
@@ -29,6 +29,8 @@
 
     <!-- move_base -->
     <include file="$(find rc_navigation)/launch/move_base/move_base.launch"/>
+    <!-- robot_localization -->
+    <include file="$(find rc_navigation)/launch/localization/rc_ekf.launch">
 
 
 </launch>
