@@ -41,7 +41,7 @@ TebLocalPlannerROS:
   # types: "point", "circular", "two_circles", "line", "polygon"
   footprint_model:
     type: "polygon"    #多边形
-    vertices: [ [ -0.35, -0.35 ], [ 0.35, -0.35 ], [ 0.35, 0.35 ], [ -0.35, 0.35 ] ]
+    vertices: [ [ -0.25, -0.25 ], [ 0.25, -0.25 ], [ 0.25, 0.25 ], [ -0.25, 0.25 ] ]
   #    type: "circular"   #圆
   #    radius: 0.31 # for type "circular"
 
